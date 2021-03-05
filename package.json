@@ -1,0 +1,22 @@
+{
+  "name": "MMM-VigilancePollensFrance",
+  "version": "0.1.0",
+  "description": "Module for a Magic Mirror device display the current level of vigilance of the allergic risk to pollens in metropolitan france.",
+  "main": "MMM-VigilancePollensFrance.js",
+  "author": "Grena",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grenagit/MMM-VigilancePollensFrance.git"
+  },
+  "keywords": [
+    "vigilance",
+    "pollens",
+    "allergy",
+    "france",
+    "risks"
+  ]
+}
