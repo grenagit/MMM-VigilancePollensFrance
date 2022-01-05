@@ -1,6 +1,6 @@
 {
   "name": "MMM-VigilancePollensFrance",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Module for a Magic Mirror device display the current level of vigilance of the allergic risk to pollens in metropolitan france.",
   "main": "MMM-VigilancePollensFrance.js",
   "author": "Grena",
