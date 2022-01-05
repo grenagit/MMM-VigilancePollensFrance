@@ -154,7 +154,7 @@ Module.register("MMM-VigilancePollensFrance", {
 
 	// Use the received data to set the various values before update DOM
 	processVigi: function(data) {
-		if(!data || data.countyNumber != this.config.department || !data.riskLevel || typeof data.risks === "undefined") {
+		if(!data || data.countyNumber != this.config.department || Number.isInteger(data.riskLevel) || typeof data.risks === "undefined") {
 			Log.error(this.name + ": Do not receive usable data.");
 			return;
 		}
