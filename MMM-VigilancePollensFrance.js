@@ -65,7 +65,7 @@ Module.register("MMM-VigilancePollensFrance", {
 			wrapper.className = "dimmed light small";
 			return wrapper;
 		}
-		
+
 		if(this.config.showDepartment) {
 			var department = document.createElement('div');
 			department.className = "dimmed light small department";
@@ -128,7 +128,7 @@ Module.register("MMM-VigilancePollensFrance", {
 
 		return wrapper;
 	},
-	
+
 	// Request new data from pollens.fr with node_helper
 	socketNotificationReceived: function(notification, payload) {
 		if(notification === "STARTED") {
@@ -158,7 +158,7 @@ Module.register("MMM-VigilancePollensFrance", {
 			Log.error(this.name + ": Do not receive usable data.");
 			return;
 		}
-		
+
 		if(this.config.hideGreenLevel) {
 			if(data.level == 0) {
 				this.hide();
@@ -166,12 +166,12 @@ Module.register("MMM-VigilancePollensFrance", {
 				this.show();
 			}
 		}
-		
+
 		this.departmentName = data.countyName;
 		this.departmentNumber = data.countyNumber;
 
 		this.pollenLevel = data.riskLevel;
-		
+
 		switch(data.riskLevel) {
 			case 0:
 				this.pollenTitle = "Pas de risque";
@@ -192,9 +192,9 @@ Module.register("MMM-VigilancePollensFrance", {
 				this.pollenTitle = "Risque très élevé";
 				break;
 		}
-		
+
 		this.pollenRisks = data.risks.filter(pollen => this.selectMinLevel(pollen)).sort((pollenA, pollenB) => this.sortPollens(pollenA, pollenB));
-		
+
 		if(this.config.showNotification) {
 			if(!this.loaded && data.level >= 2) {
 				this.notifyVigi("Attention, votre <strong>département</strong> est placé en <strong>vigilance " + this.pollenColor + "</strong> !");
@@ -206,13 +206,13 @@ Module.register("MMM-VigilancePollensFrance", {
 				this.notifyVigi("Bonne nouvelle, le <strong>niveau de vigilance</strong> diminue dans <strong>votre département</strong> !");
 			}
 		}
-		
+
 		if(this.loaded && this.config.showNotification) {
 			var self = this;
 			let newRisks = data.risks.filter(function(obj1) {
-    		return !self.lastData.risks.some(function(obj2) {
-        	return obj1.id == obj2.id;
-    		});
+				return !self.lastData.risks.some(function(obj2) {
+					return obj1.id == obj2.id;
+				});
 			});
 			if(newRisks.length == 1) {
 				this.notifyVigi("Attention, un <strong>nouveau risque</strong> vient d'être <strong>signalé</strong> dans <strong>votre département</strong> !");
@@ -260,7 +260,7 @@ Module.register("MMM-VigilancePollensFrance", {
 				break;
 			case 5:
 				return "#ea3522";
-				break;	
+				break;
 		}
 	},
 
@@ -273,12 +273,12 @@ Module.register("MMM-VigilancePollensFrance", {
 			timer: this.config.notificationDuration
 		});
 	},
-	
+
 	// Filter to select minimum level of pollen allergy risk
 	selectMinLevel: function(pollen) {
 		return pollen.level >= this.config.minPollensLevel;
 	},
-	
+
 	// Comparator to compare two risks by level in ascending order and alphabetically in ascending order
 	sortPollens: function(pollenA, pollenB) {
 		if(pollenA.level == pollenB.level) return pollenA.pollenName.toLowerCase().localeCompare(pollenB.pollenName.toLowerCase());
