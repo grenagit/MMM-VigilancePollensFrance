@@ -20,6 +20,7 @@ Module.register("MMM-VigilancePollensFrance", {
 		minPollensLevel: 1,
 		showDepartment: false,
 		showNotification: true,
+		hideWhiteLevel: false,
 		useColorLegend: true,
 
 		initialLoadDelay: 0, // 0 seconds delay
@@ -159,8 +160,8 @@ Module.register("MMM-VigilancePollensFrance", {
 			return;
 		}
 
-		if(this.config.hideGreenLevel) {
-			if(data.level == 0) {
+		if(this.config.hideWhiteLevel) {
+			if(data.riskLevel == 0) {
 				this.hide();
 			} else {
 				this.show();

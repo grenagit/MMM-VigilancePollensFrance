@@ -86,6 +86,7 @@ The following properties can be configured:
 | `minPollensLevel`            | Minimum level of vigilance of displayed pollens. <br><br> **Possible values:**`0` - `5` <br> **Default value:** `1`
 | `showDepartment `            | Show the department name. <br><br> **Possible values:** `true` or `false` <br> **Default value:** `false`
 | `showNotification`           | Show notification (level of vigilance change or new risks). <br><br> **Possible values:** `true` or `false` <br> **Default value:** `true`
+| `hideWhiteLevel`             | Hide module when vigilance level is white. <br><br> **Possible values:** `true` or `false` <br> **Default value:** `false`
 | `useColorLegend`             | Use the colored icons. <br><br> **Possible values:** `true` or `false` <br> **Default value:** `true`
 | `initialLoadDelay`           | The initial delay before loading. If you have multiple modules that use the same API key, you might want to delay one of the requests. (Milliseconds) <br><br> **Possible values:** `1000` - `5000` <br> **Default value:**  `0`
 | `retryDelay`                 | The delay before retrying after a request failure. (Milliseconds) <br><br> **Possible values:** `1000` - `60000` <br> **Default value:**  `2500`
